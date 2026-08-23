@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.example.villagerroll.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "villagerroll.refmap.json",
+  "mixins": [
+    "MerchantScreenMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
