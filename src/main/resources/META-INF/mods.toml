@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="villagerroll"
+version="${file.jarVersion}"
+displayName="Villager Reroll Button"
+authors="Valentin"
+description='''
+Adiciona um botão de reroll na interface do villager que atualiza as ofertas sem resetar nível ou profissão.
+'''
+
+[[dependencies.villagerroll]]
+    modId="forge"
+    mandatory=true
+    versionRange="[52,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.villagerroll]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.21.1,1.22)"
+    ordering="NONE"
+    side="BOTH"
