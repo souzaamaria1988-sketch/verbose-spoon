@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "villagerroll",
+  "version": "${version}",
+  "name": "Villager Reroll Button",
+  "description": "Botão de reroll na interface do villager que mantém nível e profissão.",
+  "authors": ["Valentin"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.villagerroll.VillagerRollMod"
+    ],
+    "client": [
+      "com.example.villagerroll.client.VillagerRollClient"
+    ]
+  },
+  "mixins": [
+    "villagerroll.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
