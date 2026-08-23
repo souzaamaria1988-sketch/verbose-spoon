@@ -1,0 +1,49 @@
+name: Build and Release Mod
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          
+      - name: Grant Execute Permission to Gradle
+        run: chmod +x gradlew
+        
+      - name: Build with Gradle
+        run: ./gradlew clean build
+        
+      - name: Extract Version from Tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/*.jar
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          name: Villager Reroll Mod ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            ## Mudanças nesta versão
+            - Botão de Reroll na interface do Villager
+            - Mantém profissão e nível intactos
+            - Compatível com Minecraft Java 1.21.1
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
